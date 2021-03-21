@@ -1,0 +1,21 @@
+use Mongoose;
+
+db.createCollection('Clients');
+
+db.Clients.insertMany([{
+  "nom": "Cathou Boucher",
+  "age": "17",
+  "solde": "235"
+},{
+  "nom": "Magali Melançon",
+  "age": "16",
+  "solde": "2500"
+},{
+  "nom": "Éric Salvail",
+  "age": "51",
+  "solde": "42069"
+},{
+  "nom": "John Snow",
+  "age": "23",
+  "solde": "123"
+}]);

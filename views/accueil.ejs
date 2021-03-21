@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mongoose</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <h1 class="text-center mb-5">Bienvenue sur Mongoose</h1>
+
+    <div class="row px-3">
+        <!-- Table des Clients -->
+        <div class="col-sm-6">
+            <h2 class="text-center">Liste des Clients</h2>
+            
+            <table>
+                <tr>
+                    <th>Nom Complet</th>
+                    <th>Âge</th>
+                    <th>Solde</th>
+                </tr>
+                <%result.forEach(function(item, index) {%>
+                <tr>
+                    <th><%=item.nom%></th>
+                    <th><%=item.age%> ans</th>
+                    <th><%=item.solde%>$</th>
+                </tr>
+                <%});%>
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <!-- Ajouter un Client -->
+            <h2 class="text-center">Ajouter un Client</h2>
+            <form class="needs-validation" action="/ajouterClient" method="POST" novalidate>
+                <div class="form-group">
+                    <label for="nomClient">Nom du Client</label>
+                    <input type="text" class="form-control" name="nomClient" placeholder="Nom Complet" required>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="age">Âge du Client</label>
+                            <input type="text" class="form-control" name="age" placeholder="ex: 18" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="solde">Solde du Client</label>
+                            <input type="text" class="form-control" name="solde" placeholder="ex: 42069" required>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block font-weight-bold">Soumettre</button>
+            </form>
+            <hr class="my-5">
+            <h2 class="text-center">Enlever un Client</h2>
+            <form method="POST" action="/enleverClient">
+                <div class="form-group">
+                    <select name="nom" class="form-control">
+                        <%result.forEach(function(item, index) {%>
+                            <option><%=item.nom%></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block font-weight-bold">Soumettre</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
